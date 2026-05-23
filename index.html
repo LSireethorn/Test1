@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Corporate Website Sitemap</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&family=IBM+Plex+Sans+Thai:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F7F6F2;
+    --surface: #FFFFFF;
+    --surface2: #F0EEE8;
+    --ink: #1A1A18;
+    --ink2: #5C5B57;
+    --ink3: #9C9B97;
+    --accent: #1E3A5F;
+    --accent2: #2D5F8E;
+    --gold: #C8972E;
+    --gold2: #F2C760;
+    --border: rgba(0,0,0,0.08);
+    --border2: rgba(0,0,0,0.14);
+    --radius: 10px;
+    --shadow: 0 2px 12px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.05);
+    --shadow-lg: 0 8px 32px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.06);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Sarabun', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    min-height: 100vh;
+    padding: 40px 32px 80px;
+  }
+
+  /* ─── Header ─── */
+  .page-header {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+  .page-header .label {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    background: rgba(200,151,46,0.1);
+    border: 1px solid rgba(200,151,46,0.25);
+    padding: 4px 14px;
+    border-radius: 100px;
+    margin-bottom: 16px;
+  }
+  .page-header h1 {
+    font-size: 34px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 8px;
+    letter-spacing: -0.02em;
+  }
+  .page-header p {
+    font-size: 15px;
+    color: var(--ink2);
+  }
+
+  /* ─── Sitemap Tree ─── */
+  .sitemap-tree {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  /* Level 0 — Home */
+  .level-0 {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0;
+  }
+
+  /* Connector lines */
+  .connector-vertical {
+    width: 2px;
+    height: 36px;
+    background: var(--border2);
+    margin: 0 auto;
+  }
+  .connector-horizontal-wrap {
+    position: relative;
+    width: 100%;
+    max-width: 1140px;
+    height: 0;
+  }
+  .connector-top-line {
+    position: relative;
+    width: 100%;
+    max-width: 1140px;
+    height: 2px;
+    background: var(--border2);
+    margin: 0 auto;
+  }
+  .branch-points {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1140px;
+    margin: 0 auto;
+  }
+  .branch-point {
+    width: 2px;
+    height: 28px;
+    background: var(--border2);
+    margin: 0 auto;
+  }
+
+  /* Level 1 — Main sections */
+  .level-1 {
+    display: flex;
+    justify-content: space-between;
+    gap: 14px;
+    width: 100%;
+    max-width: 1140px;
+    margin: 0 auto;
+    align-items: flex-start;
+  }
+
+  .section-col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  /* ─── Page Card ─── */
+  .page-card {
+    background: var(--surface);
+    border: 1px solid var(--border2);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    width: 100%;
+    cursor: pointer;
+    transition: box-shadow 0.2s, transform 0.2s;
+    position: relative;
+  }
+  .page-card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+  }
+  .page-card.home-card {
+    width: 200px;
+    border-top: 3px solid var(--accent);
+  }
+  .page-card.main-card {
+    border-top: 3px solid var(--accent2);
+  }
+  .page-card.sub-card {
+    border-top: 2px solid var(--gold);
+    transform-origin: top;
+  }
+
+  /* Screen mockup inside card */
+  .screen-mockup {
+    background: #E8EEF5;
+    border-bottom: 1px solid var(--border);
+    padding: 0;
+    overflow: hidden;
+    position: relative;
+  }
+  .screen-mockup.home-screen { height: 90px; }
+  .screen-mockup.main-screen { height: 72px; }
+  .screen-mockup.sub-screen  { height: 58px; }
+
+  /* Browser chrome dots */
+  .chrome-dots {
+    display: flex;
+    gap: 4px;
+    padding: 6px 8px 4px;
+    background: #D4DCE8;
+    border-bottom: 1px solid rgba(0,0,0,0.07);
+  }
+  .chrome-dots span {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: #B0BCCC;
+    display: block;
+  }
+  .chrome-dots span:nth-child(1) { background: #F5796A; }
+  .chrome-dots span:nth-child(2) { background: #F9BC4A; }
+  .chrome-dots span:nth-child(3) { background: #6CC469; }
+
+  /* Homepage screen */
+  .home-screen-content {
+    padding: 6px 8px;
+    height: calc(100% - 24px);
+  }
+  .hsc-nav { display: flex; gap: 4px; margin-bottom: 4px; }
+  .hsc-nav-bar { height: 3px; border-radius: 2px; background: rgba(30,58,95,0.3); }
+  .hsc-hero { height: 28px; background: rgba(30,58,95,0.15); border-radius: 3px; margin-bottom: 3px; display: flex; align-items: center; padding: 0 6px; gap: 4px; }
+  .hsc-hero-text { width: 40%; height: 3px; background: rgba(30,58,95,0.35); border-radius: 2px; }
+  .hsc-hero-btn { width: 18px; height: 5px; background: var(--accent); border-radius: 2px; }
+  .hsc-cols { display: flex; gap: 3px; }
+  .hsc-col { flex: 1; height: 16px; background: rgba(0,0,0,0.06); border-radius: 2px; }
+
+  /* Generic screen blocks */
+  .screen-content { padding: 5px 7px; display: flex; flex-direction: column; gap: 3px; }
+  .sc-bar { height: 3px; border-radius: 2px; background: rgba(0,0,0,0.12); }
+  .sc-bar.accent { background: rgba(30,58,95,0.3); }
+  .sc-bar.gold { background: rgba(200,151,46,0.5); }
+  .sc-row { display: flex; gap: 3px; }
+  .sc-row .sc-bar { flex: 1; }
+  .sc-img { height: 14px; background: rgba(30,58,95,0.12); border-radius: 2px; }
+  .sc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+  .sc-grid-item { height: 10px; background: rgba(0,0,0,0.08); border-radius: 2px; }
+  .sc-form-row { display: flex; gap: 3px; }
+  .sc-input { flex: 1; height: 6px; background: rgba(0,0,0,0.08); border-radius: 2px; border: 0.5px solid rgba(0,0,0,0.15); }
+  .sc-btn { width: 20px; height: 6px; background: var(--accent); border-radius: 2px; opacity: 0.7; }
+  .sc-map { height: 22px; background: #C8D8C0; border-radius: 2px; }
+  .sc-job-row { display: flex; justify-content: space-between; align-items: center; gap: 3px; }
+  .sc-job-tag { width: 16px; height: 4px; background: rgba(200,151,46,0.5); border-radius: 2px; }
+  .sc-news-row { display: flex; gap: 3px; align-items: center; }
+  .sc-news-img { width: 14px; height: 10px; background: rgba(30,58,95,0.15); border-radius: 2px; flex-shrink: 0; }
+
+  /* Card label area */
+  .card-label {
+    padding: 8px 10px 9px;
+  }
+  .card-label .page-title {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 2px;
+  }
+  .card-label .page-desc {
+    font-size: 10px;
+    color: var(--ink3);
+    line-height: 1.4;
+  }
+  .home-card .card-label .page-title { font-size: 13px; color: var(--accent); }
+
+  /* Sub-level connectors */
+  .sub-connector-v {
+    width: 2px;
+    height: 20px;
+    background: var(--border2);
+    margin: 0 auto;
+  }
+  .sub-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+  }
+  .sub-list .page-card { width: 100%; }
+
+  /* Section label chip */
+  .section-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent2);
+    background: rgba(45,95,142,0.08);
+    border: 1px solid rgba(45,95,142,0.18);
+    padding: 2px 8px;
+    border-radius: 100px;
+    margin-bottom: 8px;
+  }
+
+  /* Legend */
+  .legend {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 48px;
+    flex-wrap: wrap;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--ink2);
+  }
+  .legend-dot {
+    width: 12px; height: 3px; border-radius: 2px;
+  }
+
+  /* Tooltip */
+  .tooltip {
+    position: fixed;
+    background: var(--accent);
+    color: white;
+    font-size: 11px;
+    padding: 5px 10px;
+    border-radius: 6px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.15s;
+    z-index: 100;
+    white-space: nowrap;
+  }
+  .tooltip.show { opacity: 1; }
+
+  /* Section count badge */
+  .count-badge {
+    position: absolute;
+    top: 6px; right: 6px;
+    background: var(--gold2);
+    color: #5A3C00;
+    font-size: 9px;
+    font-weight: 700;
+    width: 16px; height: 16px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+  }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <div class="label">UX Document</div>
+  <h1>Corporate Website Sitemap</h1>
+  <p>โครงสร้างเว็บไซต์บริษัทพร้อมตัวอย่างหน้าจอ — คลิกที่การ์ดเพื่อดูรายละเอียด</p>
+</div>
+
+<div class="sitemap-tree">
+
+  <!-- Level 0: Home -->
+  <div class="level-0">
+    <div class="page-card home-card" onclick="showDetail('home')">
+      <div class="screen-mockup home-screen">
+        <div class="chrome-dots"><span></span><span></span><span></span></div>
+        <div class="home-screen-content">
+          <div class="hsc-nav">
+            <div class="hsc-nav-bar" style="width:14px"></div>
+            <div class="hsc-nav-bar" style="width:20px"></div>
+            <div class="hsc-nav-bar" style="width:16px"></div>
+            <div class="hsc-nav-bar" style="width:18px"></div>
+            <div class="hsc-nav-bar" style="width:12px"></div>
+          </div>
+          <div class="hsc-hero">
+            <div class="hsc-hero-text"></div>
+            <div class="hsc-hero-btn"></div>
+          </div>
+          <div class="hsc-cols">
+            <div class="hsc-col"></div>
+            <div class="hsc-col"></div>
+            <div class="hsc-col"></div>
+          </div>
+        </div>
+      </div>
+      <div class="card-label">
+        <div class="page-title">🏠 หน้าหลัก (Home)</div>
+        <div class="page-desc">หน้าแรกของเว็บไซต์ — Hero, บริการ, ข่าวสาร</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Vertical connector -->
+  <div class="connector-vertical"></div>
+
+  <!-- Horizontal top bar -->
+  <div class="connector-top-line"></div>
+
+  <!-- Branch verticals -->
+  <div class="branch-points">
+    <div class="branch-point"></div>
+    <div class="branch-point"></div>
+    <div class="branch-point"></div>
+    <div class="branch-point"></div>
+    <div class="branch-point"></div>
+  </div>
+
+  <!-- Level 1: Main sections -->
+  <div class="level-1">
+
+    <!-- 1. เกี่ยวกับเรา -->
+    <div class="section-col">
+      <div class="page-card main-card" onclick="showDetail('about')">
+        <div class="screen-mockup main-screen">
+          <div class="chrome-dots"><span></span><span></span><span></span></div>
+          <div class="screen-content">
+            <div class="sc-bar accent" style="width:60%"></div>
+            <div class="sc-row"><div class="sc-bar" style="width:80%"></div></div>
+            <div class="sc-img"></div>
+            <div class="sc-bar" style="width:90%"></div>
+            <div class="sc-bar" style="width:70%"></div>
+          </div>
+        </div>
+        <div class="card-label">
+          <div class="page-title">เกี่ยวกับเรา</div>
+          <div class="page-desc">About Us</div>
+        </div>
+      </div>
+      <div class="sub-connector-v"></div>
+      <div class="sub-list">
+        <div class="page-card sub-card" onclick="showDetail('history')">
+          <div class="screen-mockup sub-screen">
+            <div class="chrome-dots"><span></span><span></span><span></span></div>
+            <div class="screen-content">
+              <div class="sc-bar gold" style="width:50%"></div>
+              <div class="sc-row">
+                <div style="width:8px;height:8px;background:rgba(200,151,46,0.4);border-radius:50%;flex-shrink:0"></div>
+                <div class="sc-bar" style="width:80%"></div>
+              </div>
+              <div class="sc-row">
+                <div style="width:8px;height:8px;background:rgba(200,151,46,0.25);border-radius:50%;flex-shrink:0"></div>
+                <div class="sc-bar" style="width:65%"></div>
+              </div>
+              <div class="sc-row">
+                <div style="width:8px;height:8px;background:rgba(200,151,46,0.15);border-radius:50%;flex-shrink:0"></div>
+                <div class="sc-bar" style="width:70%"></div>
+              </div>
+            </div>
+          </div>
+          <div class="card-label">
+            <div class="page-title">ประวัติบริษัท</div>
+            <div class="page-desc">Company History</div>
+          </div>
+        </div>
+        <div class="page-card sub-card" onclick="showDetail('team')">
+          <div class="screen-mockup sub-screen">
+            <div class="chrome-dots"><span></span><span></span><span></span></div>
+            <div class="screen-content">
+              <div class="sc-bar accent" style="width:45%"></div>
+              <div class="sc-grid">
+                <div class="sc-grid-item" style="background:rgba(30,58,95,0.15)"></div>
+                <div class="sc-grid-item" style="background:rgba(30,58,95,0.15)"></div>
+                <div class="sc-grid-item"></div>
+                <div class="sc-grid-item"></div>
+              </div>
+            </div>
+          </div>
+          <div class="card-label">
+            <div class="page-title">ทีมผู้บริหาร</div>
+            <div class="page-desc">Leadership Team</div>
+          </div>
+        </div>
+        <div class="page-card sub-card" onclick="showDetail('csr')">
+          <div class="screen-mockup sub-screen">
+            <div class="chrome-dots"><span></span><span></span><span></span></div>
+            <div class="screen-content">
+              <div class="sc-bar" style="width:55%;background:rgba(80,160,80,0.35)"></div>
+              <div class="sc-img" style="background:rgba(80,160,80,0.15)"></div>
+              <div class="sc-bar" style="width:85%"></div>
+            </div>
+          </div>
+          <div class="card-label">
+            <div class="page-title">CSR & ความยั่งยืน</div>
+            <div class="page-desc">Sustainability</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. ผลิตภัณฑ์/บริการ -->
+    <div class="section-col">
+      <div class="page-card main-card" onclick="showDetail('services')">
+        <div class="screen-mockup main-screen">
+          <div class="chrome-dots"><span></span><span></span><span></span></div>
+          <div class="screen-content">
+            <div class="sc-bar accent" style="width:55%"></div>
+            <div class="sc-grid">
+              <div class="sc-grid-item"></div>
+              <div class="sc-grid-item"></div>
+              <div class="sc-grid-item"></div>
+              <div class="sc-grid-item"></div>
+            </div>
+            <div class="sc-bar" style="width:70%"></div>
+          </div>
+        </div>
+        <div class="card-label">
+          <div class="page-title">ผลิตภัณฑ์ & บริการ</div>
+          <div class="page-desc">Products & Services</div>
+        </div>
+      </div>
+      <div class="sub-connector-v"></div>
+      <div class="sub-list">
+        <div class="page-card sub-card" onclick="showDetail('product-a')">
+          <div class="screen-mockup sub-screen">
+            <div class="chrome-dots"><span></span><span></span><span></span></div>
+            <div class="screen-content">
+              <div class="sc-row">
+                <div class="sc-img" style="width:20px;flex-shrink:0"></div>
+                <div style="flex:1;display:flex;flex-direction:column;gap:2px">
+                  <div class="sc-bar accent" style="width:70%"></div>
+                  <div class="sc-bar" style="width:100%"></div>
+                </div>
+              </div>
+              <div class="sc-bar" style="width:90%"></div>
+              <div class="sc-btn" style="width:30px"></div>
+            </div>
+          </div>
+          <div class="card-label">
+            <div class="page-title">สินค้ากลุ่ม A</div>
+            <div class="page-desc">Product Category A</div>
+          </div>
+        </div>
+        <div class="page-card sub-card" onclick="showDetail('product-b')">
+          <div class="screen-mockup sub-screen">
+            <div class="chrome-dots"><span></span><span></span><span></span></div>
+            <div class="screen-content">
+              <div class="sc-row">
+                <div class="sc-img" style="width:20px;flex-shrink:0"></div>
+                <div style="flex:1;display:flex;flex-direction:column;gap:2px">
+                  <div class="sc-bar accent" style="width:65%"></div>
+                  <div class="sc-bar" style="width:100%"></div>
+                </div>
+              </div>
+              <div class="sc-bar" style="width:85%"></div>
+              <div class="sc-btn" style="width:30px"></div>
+            </div>
+          </div>
+          <div class="card-label">
+            <div class="page-title">สินค้ากลุ่ม B</div>
+            <div class="page-desc">Product Category B</div>
+          </div>
+        </div>
+        <div class="page-card sub-card" onclick="showDetail('solutions')">
+          <div class="screen-mockup sub-screen">
+            <div class="chrome-dots"><span></span><span></span><span></span></div>
+            <div class="screen-content">
+              <div class="sc-bar accent" style="width:50%"></div>
+              <div class="sc-row"><div class="sc-bar" style="width:100%"></div></div>
+              <div class="sc-row">
+                <div class="sc-bar" style="width:40%"></div>
+                <div class="sc-bar" style="width:40%"></div>
+              </div>
+            </div>
+          </div>
+          <div class="card-label">
+            <div class="page-title">Solutions</div>
+            <div class="page-desc">ทางออกสำหรับธุรกิจ</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. ข่าวสาร/สื่อ -->
+    <div class="section-col">
+      <div class="page-card main-card" onclick="showDetail('news')">
+        <div class="screen-mockup main-screen">
+          <div class="chrome-dots"><span></span><span></span><span></span></div>
+          <div class="screen-content">
+            <div class="sc-bar accent" style="width:40%"></div>
+            <div class="sc-news-row">
+              <div class="sc-news-img"></div>
+              <div style="flex:1;display:flex;flex-direction:column;gap:2px"><div class="sc-bar" style="width:100%"></div><div class="sc-bar" style="width:80%"></div></div>
+            </div>
+            <div class="sc-news-row">
+              <div class="sc-news-img"></div>
+              <div style="flex:1;display:flex;flex-direction:column;gap:2px"><div class="sc-bar" style="width:90%"></div><div class="sc-bar" style="width:70%"></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="card-label">
+          <div class="page-title">ข่าวสาร & สื่อ</div>
+          <div class="page-desc">News & Media</div>
+        </div>
+      </div>
+      <div class="sub-connector-v"></div>
+      <div class="sub-list">
+        <div class="page-card sub-card" onclick="showDetail('press')">
+          <div class="screen-mockup sub-screen">
+            <div class="chrome-dots"><span></span><span></span><span></span></div>
+            <div class="screen-content">
+              <div class="sc-bar accent" style="width:45%"></div>
+              <div class="sc-news-row">
+                <div class="sc-news-img"></div>
+                <div style="flex:1;display:flex;flex-direction:column;gap:2px"><div class="sc-bar" style="width:100%"></div><div class="sc-bar" style="width:75%"></div></div>
+              </div>
+              <div class="sc-bar" style="width:60%"></div>
+            </div>
+          </div>
+          <div class="card-label">
+            <div class="page-title">ข่าวประชาสัมพันธ์</div>
+            <div class="page-desc">Press Releases</div>
+          </div>
+        </div>
+        <div class="page-card sub-card" onclick="showDetail('blog')">
+          <div class="screen-mockup sub-screen">
+            <div class="chrome-dots"><span></span><span></span><span></span></div>
+            <div class="screen-content">
+              <div class="sc-img"></div>
+              <div class="sc-bar" style="width:80%"></div>
+              <div class="sc-bar" style="width:100%"></div>
+            </div>
+          </div>
+          <div class="card-label">
+            <div class="page-title">บทความ & Blog</div>
+            <div class="page-desc">Insights & Articles</div>
+          </div>
+        </div>
+        <div class="page-card sub-card" onclick="showDetail('events')">
+          <div class="screen-mockup sub-screen">
+            <div class="chrome-dots"><span></span><span></span><span></span></div>
+            <div class="screen-content">
+              <div class="sc-bar gold" style="width:40%"></div>
+              <div class="sc-grid">
+                <div class="sc-grid-item" style="background:rgba(200,151,46,0.2)"></div>
+                <div class="sc-grid-item"></div>
+                <div class="sc-grid-item" style="background:rgba(200,151,46,0.12)"></div>
+                <div class="sc-grid-item"></div>
+              </div>
+            </div>
+          </div>
+          <div class="card-label">
+            <div class="page-title">งานและกิจกรรม</div>
+            <div class="page-desc">Events & Exhibitions</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. นักลงทุนสัมพันธ์ -->
+    <div class="section-col">
+      <div class="page-card main-card" onclick="showDetail('ir')">
+        <div class="screen-mockup main-screen">
+          <div class="chrome-dots"><span></span><span></span><span></span></div>
+          <div class="screen-content">
+            <div class="sc-bar accent" style="width:65%"></div>
+            <div class="sc-row">
+              <div style="flex:1;height:24px;background:rgba(30,58,95,0.1);border-radius:2px"></div>
+              <div style="flex:1;height:24px;background:rgba(30,58,95,0.07);border-radius:2px"></div>
+            </div>
+            <div class="sc-bar" style="width:55%"></div>
+          </div>
+        </div>
+        <div class="card-label">
+          <div class="page-title">นักลงทุนสัมพันธ์</div>
+          <div class="page-desc">Investor Relations</div>
+        </div>
+      </div>
+      <div class="sub-connector-v"></div>
+      <div class="sub-list">
+        <div class="page-card sub-card" onclick="showDetail('financials')">
+          <div class="screen-mockup sub-screen">
+            <div class="chrome-dots"><span></span><span></span><span></span></div>
+            <div class="screen-content">
+              <div class="sc-bar accent" style="width:60%"></div>
+              <div class="sc-row">
+                <div style="flex:2;height:20px;background:linear-gradient(to top, rgba(30,58,95,0.4) 60%, transparent 60%);border-radius:2px"></div>
+                <div style="flex:2;height:20px;background:linear-gradient(to top, rgba(30,58,95,0.25) 40%, transparent 40%);border-radius:2px"></div>
+                <div style="flex:2;height:20px;background:linear-gradient(to top, rgba(30,58,95,0.55) 75%, transparent 75%);border-radius:2px"></div>
+              </div>
+            </div>
+          </div>
+          <div class="card-label">
+            <div class="page-title">ข้อมูลทางการเงิน</div>
+            <div class="page-desc">Financial Reports</div>
+          </div>
+        </div>
+        <div class="page-card sub-card" onclick="showDetail('governance')">
+          <div class="screen-mockup sub-screen">
+            <div class="chrome-dots"><span></span><span></span><span></span></div>
+            <div class="screen-content">
+              <div class="sc-bar accent" style="width:50%"></div>
+              <div class="sc-bar" style="width:100%"></div>
+              <div class="sc-bar" style="width:85%"></div>
+              <div class="sc-bar" style="width:90%"></div>
+            </div>
+          </div>
+          <div class="card-label">
+            <div class="page-title">การกำกับดูแล</div>
+            <div class="page-desc">Corporate Governance</div>
+          </div>
+        </div>
+        <div class="page-card sub-card" onclick="showDetail('agm')">
+          <div class="screen-mockup sub-screen">
+            <div class="chrome-dots"><span></span><span></span><span></span></div>
+            <div class="screen-content">
+              <div class="sc-bar gold" style="width:55%"></div>
+              <div class="sc-news-row">
+                <div style="width:12px;height:12px;background:rgba(200,151,46,0.3);border-radius:2px;flex-shrink:0"></div>
+                <div class="sc-bar" style="width:100%"></div>
+              </div>
+              <div class="sc-bar" style="width:75%"></div>
+            </div>
+          </div>
+          <div class="card-label">
+            <div class="page-title">การประชุม AGM</div>
+            <div class="page-desc">Annual General Meeting</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. ติดต่อเรา -->
+    <div class="section-col">
+      <div class="page-card main-card" onclick="showDetail('contact')">
+        <div class="screen-mockup main-screen">
+          <div class="chrome-dots"><span></span><span></span><span></span></div>
+          <div class="screen-content">
+            <div class="sc-bar accent" style="width:50%"></div>
+            <div class="sc-form-row"><div class="sc-input"></div></div>
+            <div class="sc-form-row"><div class="sc-input"></div></div>
+            <div class="sc-form-row"><div class="sc-input" style="height:12px"></div><div class="sc-btn"></div></div>
+          </div>
+        </div>
+        <div class="card-label">
+          <div class="page-title">ติดต่อเรา</div>
+          <div class="page-desc">Contact Us</div>
+        </div>
+      </div>
+      <div class="sub-connector-v"></div>
+      <div class="sub-list">
+        <div class="page-card sub-card" onclick="showDetail('offices')">
+          <div class="screen-mockup sub-screen">
+            <div class="chrome-dots"><span></span><span></span><span></span></div>
+            <div class="screen-content">
+              <div class="sc-bar accent" style="width:45%"></div>
+              <div class="sc-map"></div>
+              <div class="sc-bar" style="width:70%"></div>
+            </div>
+          </div>
+          <div class="card-label">
+            <div class="page-title">สาขาและที่ตั้ง</div>
+            <div class="page-desc">Office Locations</div>
+          </div>
+        </div>
+        <div class="page-card sub-card" onclick="showDetail('careers')">
+          <div class="screen-mockup sub-screen">
+            <div class="chrome-dots"><span></span><span></span><span></span></div>
+            <div class="screen-content">
+              <div class="sc-bar accent" style="width:40%"></div>
+              <div class="sc-job-row">
+                <div class="sc-bar" style="width:60%"></div>
+                <div class="sc-job-tag"></div>
+              </div>
+              <div class="sc-job-row">
+                <div class="sc-bar" style="width:50%"></div>
+                <div class="sc-job-tag"></div>
+              </div>
+            </div>
+          </div>
+          <div class="card-label">
+            <div class="page-title">ร่วมงานกับเรา</div>
+            <div class="page-desc">Careers</div>
+          </div>
+        </div>
+        <div class="page-card sub-card" onclick="showDetail('support')">
+          <div class="screen-mockup sub-screen">
+            <div class="chrome-dots"><span></span><span></span><span></span></div>
+            <div class="screen-content">
+              <div class="sc-bar accent" style="width:40%"></div>
+              <div class="sc-bar" style="width:90%"></div>
+              <div class="sc-form-row"><div class="sc-input"></div><div class="sc-btn" style="width:16px;height:6px"></div></div>
+            </div>
+          </div>
+          <div class="card-label">
+            <div class="page-title">ฝ่ายสนับสนุน</div>
+            <div class="page-desc">Customer Support</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /level-1 -->
+
+</div><!-- /sitemap-tree -->
+
+<!-- Legend -->
+<div class="legend">
+  <div class="legend-item"><div class="legend-dot" style="background:var(--accent);height:4px"></div>หน้าหลัก (Home)</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--accent2);height:3px"></div>หน้าหมวดหลัก (Main)</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--gold);height:2px"></div>หน้าย่อย (Sub-page)</div>
+  <div class="legend-item" style="color:var(--ink3);font-size:11px">📋 คลิกที่การ์ดเพื่อดูรายละเอียดหน้า</div>
+</div>
+
+<!-- Detail Modal -->
+<div id="modal-overlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.45);z-index:200;align-items:center;justify-content:center;padding:20px" onclick="closeModal(event)">
+  <div id="modal-box" style="background:var(--surface);border-radius:16px;box-shadow:0 24px 60px rgba(0,0,0,0.2);max-width:480px;width:100%;overflow:hidden">
+    <div id="modal-header" style="padding:20px 24px 16px;border-bottom:1px solid var(--border)">
+      <div style="display:flex;align-items:center;justify-content:space-between">
+        <div>
+          <div id="modal-chip" style="display:inline-block;font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent2);background:rgba(45,95,142,0.08);border:1px solid rgba(45,95,142,0.18);padding:2px 8px;border-radius:100px;margin-bottom:6px"></div>
+          <h2 id="modal-title" style="font-size:18px;font-weight:700;color:var(--accent)"></h2>
+          <p id="modal-url" style="font-size:11px;color:var(--ink3);margin-top:2px"></p>
+        </div>
+        <button onclick="document.getElementById('modal-overlay').style.display='none'" style="background:none;border:none;font-size:20px;color:var(--ink3);cursor:pointer;padding:4px;line-height:1">✕</button>
+      </div>
+    </div>
+    <div style="padding:20px 24px">
+      <p id="modal-desc" style="font-size:14px;color:var(--ink2);line-height:1.7;margin-bottom:16px"></p>
+      <div id="modal-elements" style="display:flex;flex-direction:column;gap:6px"></div>
+    </div>
+  </div>
+</div>
+
+<div class="tooltip" id="tooltip"></div>
+
+<script>
+const pages = {
+  home:       { title:'หน้าหลัก (Home)', chip:'Level 0', url:'/index.html', desc:'หน้าแรกของเว็บไซต์ ทำหน้าที่เป็น entry point หลัก ประกอบด้วย Hero section ที่ดึงดูดสายตา พร้อมนำเสนอภาพรวมของบริษัท บริการเด่น และข่าวสารล่าสุด', elements:['🎯 Hero Banner พร้อม CTA Button','📦 บริการเด่น 3-4 รายการ','📰 ข่าวสารล่าสุด','🤝 พันธมิตรและลูกค้า','📊 ตัวเลขความสำเร็จ (Stats)','📞 Contact CTA'] },
+  about:      { title:'เกี่ยวกับเรา', chip:'Level 1', url:'/about/', desc:'หน้า overview ของบริษัท บอกเล่าวิสัยทัศน์ พันธกิจ และค่านิยมหลักขององค์กร เชื่อมโยงไปยังหน้าย่อยต่าง ๆ', elements:['🏢 วิสัยทัศน์และพันธกิจ','📜 เรื่องราวของบริษัท','🌍 การดำเนินงานระดับโลก','→ ลิงก์ไปยังหน้าย่อย'] },
+  history:    { title:'ประวัติบริษัท', chip:'Level 2', url:'/about/history/', desc:'Timeline แสดงประวัติและเหตุการณ์สำคัญของบริษัทตั้งแต่ก่อตั้งจนถึงปัจจุบัน', elements:['📅 Timeline แบบ Interactive','🏆 Milestone สำคัญ','📸 ภาพถ่ายประวัติศาสตร์','📄 เอกสารและรายงานย้อนหลัง'] },
+  team:       { title:'ทีมผู้บริหาร', chip:'Level 2', url:'/about/leadership/', desc:'แนะนำทีมผู้บริหารระดับสูง พร้อมประวัติและความเชี่ยวชาญ', elements:['👤 Profile Card คณะผู้บริหาร','📋 ประวัติการศึกษาและประสบการณ์','🔗 LinkedIn Profile','📊 โครงสร้างองค์กร'] },
+  csr:        { title:'CSR & ความยั่งยืน', chip:'Level 2', url:'/about/sustainability/', desc:'นำเสนอกิจกรรม CSR และแผนความยั่งยืนของบริษัท ครอบคลุม ESG Framework', elements:['🌿 เป้าหมาย ESG','♻️ โครงการสิ่งแวดล้อม','👥 การพัฒนาชุมชน','📊 รายงานความยั่งยืนประจำปี'] },
+  services:   { title:'ผลิตภัณฑ์ & บริการ', chip:'Level 1', url:'/products/', desc:'หน้า overview สินค้าและบริการทั้งหมด พร้อมตัวกรองและการค้นหา', elements:['🔍 Search & Filter สินค้า','📦 Product Grid / List View','🏷️ Category Navigation','📞 ขอข้อมูลเพิ่มเติม'] },
+  'product-a':{ title:'สินค้ากลุ่ม A', chip:'Level 2', url:'/products/category-a/', desc:'รายละเอียดสินค้าในกลุ่ม A พร้อม Spec และเอกสารประกอบ', elements:['📋 รายการสินค้าในกลุ่ม','📄 Datasheet / Brochure (PDF)','💬 Request for Quotation','🔧 Technical Specifications'] },
+  'product-b':{ title:'สินค้ากลุ่ม B', chip:'Level 2', url:'/products/category-b/', desc:'รายละเอียดสินค้าในกลุ่ม B พร้อม Spec และเอกสารประกอบ', elements:['📋 รายการสินค้าในกลุ่ม','📄 Datasheet / Brochure (PDF)','💬 Request for Quotation','🔧 Technical Specifications'] },
+  solutions:  { title:'Solutions', chip:'Level 2', url:'/products/solutions/', desc:'นำเสนอ Solution สำหรับแต่ละ Industry ที่บริษัทให้บริการ', elements:['🏭 Industry-specific Solutions','📊 Case Studies','💡 Whitepapers & Resources','📞 Consult with Expert'] },
+  news:       { title:'ข่าวสาร & สื่อ', chip:'Level 1', url:'/news/', desc:'ศูนย์กลางข่าวสารและสื่อของบริษัท รวบรวมทุกประเภทเนื้อหา', elements:['🔖 News Category Filter','🔍 Search Bar','📰 Featured Article','📅 Archive ย้อนหลัง'] },
+  press:      { title:'ข่าวประชาสัมพันธ์', chip:'Level 2', url:'/news/press/', desc:'Press Releases ทางการจากบริษัท สำหรับสื่อมวลชนและนักลงทุน', elements:['📣 Latest Press Releases','📥 ดาวน์โหลด PDF','📸 Media Kit (Logo, Photos)','📧 Media Contact'] },
+  blog:       { title:'บทความ & Blog', chip:'Level 2', url:'/news/blog/', desc:'บทความเชิงลึก ความรู้ และมุมมองจากผู้เชี่ยวชาญในองค์กร', elements:['✍️ บทความล่าสุด','🏷️ Tag & Category','🔍 Full-text Search','📬 Newsletter Signup'] },
+  events:     { title:'งานและกิจกรรม', chip:'Level 2', url:'/news/events/', desc:'ปฏิทินงานแสดงสินค้า สัมมนา และกิจกรรมต่าง ๆ ที่บริษัทเข้าร่วม', elements:['📅 Event Calendar','📍 สถานที่จัดงาน (Map)','🎟️ ลงทะเบียนเข้าร่วม','🗂️ Past Events Archive'] },
+  ir:         { title:'นักลงทุนสัมพันธ์', chip:'Level 1', url:'/investors/', desc:'ข้อมูลสำหรับผู้ถือหุ้นและนักลงทุน ครบถ้วนตามหลักธรรมาภิบาล', elements:['📈 ราคาหลักทรัพย์ Real-time','📊 Financial Highlights','📄 รายงานประจำปี','📅 ปฏิทิน IR Events'] },
+  financials: { title:'ข้อมูลทางการเงิน', chip:'Level 2', url:'/investors/financials/', desc:'งบการเงิน รายงานประจำปี และข้อมูลทางการเงินย้อนหลัง', elements:['📊 งบการเงินรายไตรมาส','📥 ดาวน์โหลด Annual Report','📉 Financial Ratio Analysis','🔍 เปรียบเทียบย้อนหลัง 5 ปี'] },
+  governance: { title:'การกำกับดูแล', chip:'Level 2', url:'/investors/governance/', desc:'นโยบายและโครงสร้างการกำกับดูแลกิจการที่ดี', elements:['📋 คณะกรรมการบริษัท','📜 นโยบาย CG','🔒 Anti-Corruption Policy','📄 Articles of Association'] },
+  agm:        { title:'การประชุม AGM', chip:'Level 2', url:'/investors/agm/', desc:'ข้อมูลและเอกสารประกอบการประชุมสามัญผู้ถือหุ้น', elements:['📅 วันและสถานที่ประชุม','📄 หนังสือเชิญประชุม','🗳️ การลงคะแนนออนไลน์','📹 Video Archive ย้อนหลัง'] },
+  contact:    { title:'ติดต่อเรา', chip:'Level 1', url:'/contact/', desc:'แบบฟอร์มติดต่อและช่องทางการสื่อสารทั้งหมด', elements:['📝 Contact Form','📞 เบอร์โทรและอีเมล','🗺️ แผนที่และที่อยู่','💬 Live Chat / Chatbot'] },
+  offices:    { title:'สาขาและที่ตั้ง', chip:'Level 2', url:'/contact/locations/', desc:'ข้อมูลสำนักงานและสาขาทั่วประเทศพร้อมแผนที่', elements:['🗺️ Interactive Map','📍 รายชื่อสาขาทั้งหมด','🚗 เส้นทางการเดินทาง','⏰ เวลาทำการ'] },
+  careers:    { title:'ร่วมงานกับเรา', chip:'Level 2', url:'/contact/careers/', desc:'ตำแหน่งงานว่างและข้อมูลสำหรับผู้สนใจร่วมงาน', elements:['💼 ตำแหน่งงานว่าง','📤 ส่ง Resume / CV','🌟 สวัสดิการและสิทธิประโยชน์','🏢 Company Culture & Values'] },
+  support:    { title:'ฝ่ายสนับสนุน', chip:'Level 2', url:'/contact/support/', desc:'ช่องทางรับเรื่องและให้บริการหลังการขาย', elements:['🎫 Submit Support Ticket','📚 FAQ & Knowledge Base','📞 Hotline 24/7','📊 Track Request Status'] },
+};
+
+function showDetail(id) {
+  const p = pages[id];
+  if (!p) return;
+  document.getElementById('modal-chip').textContent = p.chip;
+  document.getElementById('modal-title').textContent = p.title;
+  document.getElementById('modal-url').textContent = 'URL: ' + p.url;
+  document.getElementById('modal-desc').textContent = p.desc;
+  const el = document.getElementById('modal-elements');
+  el.innerHTML = p.elements.map(e => `<div style="display:flex;align-items:flex-start;gap:8px;font-size:13px;color:var(--ink2);padding:6px 10px;background:var(--surface2);border-radius:7px">${e}</div>`).join('');
+  document.getElementById('modal-overlay').style.display = 'flex';
+}
+
+function closeModal(e) {
+  if (e.target.id === 'modal-overlay') {
+    document.getElementById('modal-overlay').style.display = 'none';
+  }
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') document.getElementById('modal-overlay').style.display = 'none';
+});
+</script>
+</body>
+</html>
